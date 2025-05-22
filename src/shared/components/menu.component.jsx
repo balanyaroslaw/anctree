@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {Link, useNavigate} from 'react-router-dom'
-import Logo from '../../assets/logo.png'
+import Logo2 from '../../assets/logo2.png'
 import CreateWindow from "../windows/create.window";
 import useModalStore from "../../store/modal.store";
 import { windowList } from "../keys/windowList";
@@ -23,7 +23,7 @@ function MainMenu() {
         <div className="flex justify-between h-16">
           <div className="flex w-full justify-center items-center">
             <div className="font-outfit flex-shrink-0 flex items-center">
-              <img className="h-10 w-auto" src={Logo} alt="AncTree Logo" />
+              <img className="h-10 w-auto" src={Logo2} alt="AncTree Logo" />
               <span className="ml-2 text-2xl font-bold text-brown">ANCTREE</span>
             </div>
             

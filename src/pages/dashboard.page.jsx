@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Trees from '../assets/tree_bg.png';
+import Trees3 from '../assets/tree_bg3.png';
 import Family from '../assets/family.png';
 import Rect1 from '../assets/curv_rect.png';
 import Rect2 from '../assets/curv_rect_2.png';
@@ -18,7 +19,7 @@ function Dashboard() {
   const modalStatus = useModalStore((state) => state.isOpen);
   const window = useModalStore((state) => state.window);
   const isAuth = userService.isAuthenticated();
-   const [tree, node] = [useTreeStore((state) => state.tree), useTreeStore((state) => state.node)];
+  const [tree, node] = [useTreeStore((state) => state.tree), useTreeStore((state) => state.node)];
   const getTree = useTreeStore((state)=>state.getTree);
   const navigate = useNavigate();
 
@@ -35,8 +36,13 @@ function Dashboard() {
   };
 
   useEffect(()=>{
-    getTree();
-  },[])
+    const fetchTree = async (id)=>{
+        await getTree(id);
+    }
+    if(!!localStorage.getItem('TREE_ID')){
+      fetchTree(localStorage.getItem('TREE_ID'));
+    }
+    },[])
 
   return (
     <>
@@ -127,7 +133,7 @@ function Dashboard() {
             </h1>
           </div>
 
-          <div className="flex justify-center items-center w-full z-20 absolute top-[130%] sm:top-[140%] md:top-[150%] w-full px-4">
+          <div className="flex justify-center items-center w-full z-20 absolute top-[120%] sm:top-[140%] md:top-[135%] w-full px-4">
             <button
               className="w-full sm:w-[50%] md:w-[30%] py-2 sm:py-3 bg-tree shadow-[5px_5px_15px_3px_rgba(0,0,0,0.4)] sm:shadow-[10px_10px_30px_5px_rgba(0,0,0,0.4)] rounded-lg text-brown text-xl sm:text-2xl px-3 sm:px-5 font-bold text-center"
               onClick={() => handleClick()}
@@ -137,9 +143,8 @@ function Dashboard() {
           </div>
 
           <div className="absolute inset-0 top-[80%] z-0">
-            <img src={Trees} alt="" className="w-full h-auto" />
+            <img src={Trees3} alt="" className="w-full h-auto" />
           </div>
-          <div className="absolute h-[200px] inset-0 top-[150%] z-0 bg-[#B1CF66]"></div>
         </div>
 
         {/* Modals */}
