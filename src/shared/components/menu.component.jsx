@@ -4,7 +4,7 @@ import Logo2 from '../../assets/logo2.png'
 import CreateWindow from "../windows/create.window";
 import useModalStore from "../../store/modal.store";
 import { windowList } from "../keys/windowList";
-function MainMenu() {
+function MainMenu({onInput}) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -15,8 +15,33 @@ function MainMenu() {
     if(!!!localStorage.getItem('TREE_ID')&&!!!localStorage.getItem("ACCESS_TOKEN")){
       setIsTreeExist(true);
     } 
-  },[])
-  const open = useModalStore((state)=>state.open)
+  },[]);
+  
+  const open = useModalStore((state)=>state.open);
+
+  const [value, setValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false); 
+  let typingTimeout = undefined;
+
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+
+    if (!isTyping) {
+      setIsTyping(true);
+      onInput(true)
+      console.log('Початок введення даних');
+    }
+
+    clearTimeout(typingTimeout);
+
+    typingTimeout = setTimeout(() => {
+      setIsTyping(false);
+      onInput(false)
+      console.log('Кінець введення даних. Фінальне значення:', newValue);
+    }, 800);
+  };
+
   return (
     <div className="fixed w-full bg-tree shadow-md z-50 top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,6 +69,14 @@ function MainMenu() {
                 Про нас
               </Link>
             </div>
+
+            <input
+              id="brown-input"
+              type="text"
+              placeholder="Введіть текст..."
+              className="w-full px-4 py-3 rounded-lg font-comfortaa bg-transparent text-brown placeholder-brown border border-brown focus:outline-none focus:ring-2 focus:ring-brown focus:border-transparent"
+              onChange={handleChange}
+            />
 
             <div className="hidden sm:ml-6 sm:flex sm:items-center gap-4">
               <button

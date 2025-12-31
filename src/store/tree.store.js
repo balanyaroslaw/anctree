@@ -144,6 +144,10 @@ const useTreeStore = create((set) => ({
     
     setId: (id) => set(()=>({
       treeId: id
+    })),
+
+    setLoading: (state) => set(() => ({
+      loading: state
     }))
 
 }))

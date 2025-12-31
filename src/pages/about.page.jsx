@@ -117,7 +117,7 @@ function AboutUs() {
               </div>
               
               <div className="mt-12">
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                   {/* Team Member 1 */}
                   <div className="bg-tree rounded-lg p-6 shadow-sm">
                     <div className="flex flex-col items-center">
@@ -154,6 +154,19 @@ function AboutUs() {
                       <p className="text-brown">UX/UI Designer</p>
                       <p className="mt-3 text-brown text-center">
                         Створює інтуїтивно зрозумілий та естетично привабливий дизайн застосунку.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-tree rounded-lg p-6 shadow-sm">
+                    <div className="flex flex-col items-center">
+                      <div className="flex justify-center h-24 w-24 rounded-full overflow-hidden bg-cream items-center">
+                          <span className="text-rose-400 font-bold text-6xl">С</span>
+                      </div>
+                      <h3 className="mt-4 text-xl font-medium text-brown">Софія Саволюк</h3>
+                      <p className="text-brown">Front-end Developer</p>
+                      <p className="mt-3 text-brown text-center">
+                        Займається покращенням поточної кодової бази та розробляє користувацький інтерфейс
                       </p>
                     </div>
                   </div>

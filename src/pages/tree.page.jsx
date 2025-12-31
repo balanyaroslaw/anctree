@@ -20,6 +20,7 @@ function TreeBoard() {
   const modalStatus = useModalStore((state)=>state.isOpen)
   const window = useModalStore((state)=>state.window)
   const loading = useTreeStore((state)=>state.loading);
+  const setLoading = useTreeStore((state) => state.setLoading);
   const treeExist = !!localStorage.getItem('TREE_ID');
   const isAuth = userService.isAuthenticated();
 
@@ -31,12 +32,24 @@ function TreeBoard() {
     if(treeExist){
       fetchTree(localStorage.getItem('TREE_ID'));
     }
-  },[])
+  },[]);
+
+  const onInput = (state) => {
+    if(state) {
+      setLoading(true);
+      console.log(state)
+      return;
+    }
+
+    setLoading(false);
+    return;
+
+  }
 
    return(
     <>
       <div className="relative w-100 h-100">
-        <MainMenu/>
+        <MainMenu onInput={onInput}/>
         <div className="relative w-100 flex z-0 items-center justify-center">
           <TreeComponent 
             node={{width:150, height:140}}

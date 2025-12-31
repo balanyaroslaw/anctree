@@ -48,7 +48,6 @@ function Dashboard() {
     <>
       <MainMenu/>
       <div className="h-full bg-cream flex flex-col items-center py-4 sm:py-8 md:py-12 overflow-hidden">
-        {/* Hero Section */}
         <div className="relative w-full h-full flex flex-col">
           <div className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-10 mt-4 sm:mt-6 md:mt-10 z-10 px-4">
             <div className="flex flex-col items-center">
@@ -74,7 +73,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Family Section */}
         <div className="relative w-full h-full flex flex-col md:flex-row items-center px-4 sm:px-6 md:px-10 mt-[25%] sm:mt-[20%] mb-[5%]">
           <div className="flex justify-center mt-5 z-10 w-full md:w-[40%]">
             <img
@@ -98,7 +96,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Search Section */}
         <div className="relative w-full h-full flex flex-col-reverse md:flex-row items-center px-4 sm:px-6 md:px-10 mb-[5%]">
           <div className="flex flex-col gap-6 sm:gap-10 md:gap-20 mt-8 md:mt-0 w-full md:w-[60%]">
             <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold text-brown text-center md:text-left">
@@ -122,7 +119,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Photos Section */}
         <div className="relative w-full h-full flex flex-col mb-[25%]">
           <div className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-10 mt-5 z-10 px-4">
             <div className="flex justify-center items-center">
@@ -147,7 +143,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Modals */}
         <CreateWindow isOpen={showModal} close={setShowModal} />
         {!!localStorage.getItem('TREE_ID') && modalStatus && window === windowList.profileWindow && isAuth && <Profile />}
       </div>
